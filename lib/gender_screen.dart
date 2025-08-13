@@ -1,79 +1,86 @@
 import 'package:flutter/material.dart';
+import 'name_screen.dart';
 
-class GenderScreen extends StatefulWidget {
+class GenderScreen extends StatelessWidget {
   const GenderScreen({super.key});
-
-  @override
-  State<GenderScreen> createState() => _GenderScreenState();
-}
-
-class _GenderScreenState extends State<GenderScreen> {
-  String? selectedGender;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFDF5EC), // light beige bg
       appBar: AppBar(
-        title: const Text("Select Gender"),
-        backgroundColor: Colors.teal,
+        backgroundColor: const Color(0xFFFDF5EC),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.help_outline, color: Colors.black),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              "What's your gender?",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
             const SizedBox(height: 20),
-            RadioListTile<String>(
-              title: const Text("Male"),
-              value: "Male",
-              groupValue: selectedGender,
-              onChanged: (value) {
-                setState(() {
-                  selectedGender = value;
-                });
-              },
-            ),
-            RadioListTile<String>(
-              title: const Text("Female"),
-              value: "Female",
-              groupValue: selectedGender,
-              onChanged: (value) {
-                setState(() {
-                  selectedGender = value;
-                });
-              },
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (selectedGender != null) {
-                    // Next screen navigation
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Selected: $selectedGender")),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: const Text(
-                  "Next",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
+            const Text(
+              "Are you a man or a woman?",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-            )
+            ),
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _genderOption(
+                  context,
+                  imagePath: 'assets/images/men.png',
+                  label: 'I am a man',
+                ),
+                _genderOption(
+                  context,
+                  imagePath: 'assets/images/women.png',
+                  label: 'I am a woman',
+                ),
+              ],
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _genderOption(BuildContext context,
+      {required String imagePath, required String label}) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const NameScreen()),
+        );
+      },
+      child: Column(
+        children: [
+          SizedBox( // Container ko SizedBox se replace kiya
+            width: MediaQuery.of(context).size.width * 0.28,
+            height: MediaQuery.of(context).size.height * 0.18,
+            child: Image.asset(imagePath, fit: BoxFit.contain),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ],
       ),
     );
   }

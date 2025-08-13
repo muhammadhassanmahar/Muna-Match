@@ -65,6 +65,8 @@ flutter:
     - assets/images/google.png
     - assets/images/characters.png
     - assets/images/logo2.png
+    - assets/images/women.png
+    - assets/images/men.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
