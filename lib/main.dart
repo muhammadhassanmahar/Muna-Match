@@ -7,6 +7,7 @@ import 'verification_screen.dart';
 import 'welcome_screen.dart';
 import 'gender_screen.dart'; 
 import 'name_screen.dart'; 
+import 'about_you_screen.dart'; 
 
 void main() {
   runApp(const MunaMatchApp());
@@ -43,6 +44,7 @@ class MunaMatchApp extends StatelessWidget {
           '/gender': (context) => const GenderScreen(),
           '/name': (context) => const NameScreen(),
             '/birthday': (context) => const BirthdayScreen(),
+             '/about_you': (context) => const AboutYouScreen(),
       },
     );
   }
