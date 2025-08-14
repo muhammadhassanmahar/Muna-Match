@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'birthday_screen.dart';
 import 'gender_screen.dart';
 
 class NameScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _NameScreenState extends State<NameScreen> {
     if (isButtonEnabled) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const GenderScreen()),
+        MaterialPageRoute(builder: (context) => const BirthdayScreen()),
       );
     }
   }
@@ -51,7 +52,12 @@ class _NameScreenState extends State<NameScreen> {
                 IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GenderScreen(),
+                      ),
+                    );
                   },
                 ),
                 const Expanded(
