@@ -72,6 +72,7 @@ flutter:
     - assets/images/married.png
     - assets/images/know_someone.png 
     - assets/images/curious.png
+    - assets/images/couple.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
