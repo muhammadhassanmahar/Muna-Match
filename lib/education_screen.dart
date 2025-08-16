@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'block_contacts_screen.dart'; // 👈 ye import add kiya
 
 class EducationScreen extends StatefulWidget {
   const EducationScreen({super.key});
@@ -53,7 +54,7 @@ class _EducationScreenState extends State<EducationScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Options list (fixed: no .toList())
+            // Options list
             ...educationLevels.map((level) {
               final isSelected = selectedEducation == level;
               return GestureDetector(
@@ -79,7 +80,7 @@ class _EducationScreenState extends State<EducationScreen> {
 
             const Spacer(),
 
-            // Continue button (fixed: withValues instead of withOpacity)
+            // Continue button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -89,14 +90,15 @@ class _EducationScreenState extends State<EducationScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Placeholder(),
+                            builder: (context) =>
+                                const BlockContactsScreen(), // 👈 yahan change kiya
                           ),
                         );
                       },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFEB9A3), // active color
                   disabledBackgroundColor:
-                      const Color(0xFFFEB9A3).withValues(alpha: 0.5), // fixed
+                      const Color(0xFFFEB9A3).withValues(alpha: 0.5),
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
