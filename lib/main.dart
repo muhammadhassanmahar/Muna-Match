@@ -10,6 +10,9 @@ import 'welcome_screen.dart';
 import 'gender_screen.dart'; 
 import 'name_screen.dart'; 
 import 'about_you_screen.dart';
+import 'education_screen.dart';
+import 'block_contacts_screen.dart';
+import 'enable_notifications_screen.dart';
 
 void main() {
   runApp(const MunaMatchApp());
@@ -49,6 +52,9 @@ class MunaMatchApp extends StatelessWidget {
              '/about_you': (context) => const AboutYouScreen(),
               '/begin_journey': (context) => const BeginJourneyScreen(),
                '/profession_screen': (context) => const ProfessionScreen(),
+                    '/education_screen': (context) => const EducationScreen(), 
+                    '/block_contacts_screen': (context) => const BlockContactsScreen(),
+                    '/enable_notifications_screen': (context) => const EnableNotificationsScreen(),           
       },
     );
   }
