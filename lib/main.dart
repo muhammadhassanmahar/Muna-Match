@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
 import 'package:muna_match/confirm_screen.dart';
@@ -56,7 +57,9 @@ class MunaMatchApp extends StatelessWidget {
                     '/education_screen': (context) => const EducationScreen(), 
                     '/block_contacts_screen': (context) => const BlockContactsScreen(),
                     '/enable_notifications_screen': (context) => const EnableNotificationsScreen(), 
-                      '/confirm_screen': (context) => const ConfirmScreen(),         
+                      '/confirm_screen': (context) => const ConfirmScreen(), 
+                      '/add_photo_screen': (context) => const AddPhotoScreen(), 
+                                      
       },
     );
   }
