@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConfirmScreen extends StatelessWidget {
-  const ConfirmScreen({Key? key}) : super(key: key);
+  const ConfirmScreen({super.key}); // ✔️ Using super.key
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ConfirmScreen extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
-                      'assets/images/sample_user.png', // Replace with your image
+                      'assets/images/sample_user.png', // Replace with your own image
                       height: constraints.maxHeight * 0.3,
                       fit: BoxFit.cover,
                     ),
@@ -108,7 +108,10 @@ class ConfirmScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   TextButton(
                     onPressed: () {
-                      // TODO: Add change photo logic here
+                      // Placeholder for change photo logic
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Change photo tapped")),
+                      );
                     },
                     child: const Text(
                       "Change photo",
