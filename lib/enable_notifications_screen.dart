@@ -1,91 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/profile_photo_screen.dart';
+
 
 class EnableNotificationsScreen extends StatelessWidget {
   const EnableNotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.08),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.notifications_active,
-              size: height * 0.15,
-              color: Colors.deepPurple,
-            ),
-            SizedBox(height: height * 0.04),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              /// Phone + Logo Images
+              Expanded(
+                flex: 4,
+                child: Center(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      /// Phone mockup image
+                      Image.asset(
+                        "assets/images/phone_mockup.png", // phone wali image
+                        height: size.height * 0.35,
+                        fit: BoxFit.contain,
+                      ),
 
-            Text(
-              "Enable Notifications",
-              style: TextStyle(
-                fontSize: height * 0.03,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: height * 0.02),
-
-            Text(
-              "Stay updated with important alerts and updates. "
-              "We’ll notify you about matches and new messages.",
-              style: TextStyle(
-                fontSize: height * 0.018,
-                color: Colors.grey[700],
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: height * 0.05),
-
-            // Allow Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Yahan aap agle screen ka navigation lagao
-                  // Navigator.push(context, MaterialPageRoute(builder: (_) => NextScreen()));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  "Allow",
-                  style: TextStyle(
-                    fontSize: height * 0.02,
-                    color: Colors.white,
+                      /// Logo image (phone ke upar overlap)
+                      Positioned(
+                        top: size.height * 0.07,
+                        child: Image.asset(
+                          "assets/images/logo.png", // logo wali image
+                          height: size.height * 0.05,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: height * 0.02),
 
-            // Skip for now
-            TextButton(
-              onPressed: () {
-                // Navigation to next screen
-                // Navigator.push(context, MaterialPageRoute(builder: (_) => NextScreen()));
-              },
-              child: Text(
-                "Skip for now",
-                style: TextStyle(
-                  fontSize: height * 0.018,
-                  color: Colors.deepPurple,
-                  fontWeight: FontWeight.w500,
+              /// Heading + Subtext
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Text(
+                      "Dont miss any updates\nfrom potential matches",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: size.width * 0.05,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      "We’ll let you know when you get new likes, matches and messages from other members.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: size.width * 0.035,
+                        color: Colors.black54,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+
+              /// Button + Bottom text
+              Column(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const ProfilePhotoScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFFF5C5C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                      ),
+                      child: Text(
+                        "Enable Notifications",
+                        style: TextStyle(
+                          fontSize: size.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    "Miss out on updates",
+                    style: TextStyle(
+                      fontSize: size.width * 0.035,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
