@@ -15,8 +15,7 @@ class _ProfilePhotoScreenState extends State<ProfilePhotoScreen> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final pickedFile =
-        await picker.pickImage(source: ImageSource.gallery); // gallery open
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
@@ -26,7 +25,7 @@ class _ProfilePhotoScreenState extends State<ProfilePhotoScreen> {
   }
 
   void _goToNextScreen() {
-    Navigator.pushNamed(context, '/nextScreen'); // अगली screen अभी define नहीं की
+    Navigator.pushNamed(context, '/confirm_screen'); // ✅ Navigation added
   }
 
   @override
@@ -146,7 +145,7 @@ class _ProfilePhotoScreenState extends State<ProfilePhotoScreen> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: _goToNextScreen,
+                  onPressed: _goToNextScreen, // ✅ Navigation triggered here
                   child: const Text(
                     "Add photo",
                     style: TextStyle(fontSize: 16, color: Colors.white),
