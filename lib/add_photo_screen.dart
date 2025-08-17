@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'verify_screen.dart'; // Import the VerifyScreen
 
 class AddPhotoScreen extends StatelessWidget {
   const AddPhotoScreen({super.key});
@@ -120,7 +121,14 @@ class AddPhotoScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const VerifyScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF6B5C),
                     shape: RoundedRectangleBorder(
