@@ -105,7 +105,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                        isButtonActive ? Colors.orange : Colors.grey[300],
+                        isButtonActive ? const Color(0xFFFF6B5C) : Colors.grey[300],
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
