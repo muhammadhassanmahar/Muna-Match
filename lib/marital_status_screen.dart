@@ -84,7 +84,7 @@ class _MaritalStatusScreenState extends State<MaritalStatusScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedIndex != null
                       ? Colors.redAccent
-                      : Colors.redAccent.withOpacity(0.4),
+                      : Colors.redAccent.withAlpha(102), // 102 is ~40% opacity
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25),
                   ),
