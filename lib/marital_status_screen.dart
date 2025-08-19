@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/dress_screen.dart';
+
 
 class MaritalStatusScreen extends StatefulWidget {
   const MaritalStatusScreen({super.key});
@@ -80,7 +82,14 @@ class _MaritalStatusScreenState extends State<MaritalStatusScreen> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: selectedIndex != null ? () {} : null,
+                onPressed: selectedIndex != null
+                    ? () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DressScreen()),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedIndex != null
                       ? Colors.redAccent
