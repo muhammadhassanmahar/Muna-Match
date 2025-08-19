@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'children_screen.dart'; // Import the ChildrenScreen
 
 class AlcoholScreen extends StatefulWidget {
   const AlcoholScreen({super.key});
@@ -124,7 +125,10 @@ class _AlcoholScreenState extends State<AlcoholScreen> {
                   ),
                 ),
                 onPressed: () {
-                  // Navigate to next screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChildrenScreen()),
+                  );
                 },
                 child: const Text(
                   "Continue",
