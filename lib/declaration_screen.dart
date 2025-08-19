@@ -19,7 +19,7 @@ class DeclarationScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.asset(
-                      "assets/bismillah.png", // आपकी asset image
+                      "assets/images/bismillah.png", // आपकी asset image
                       height: 60,
                     ),
                     const SizedBox(height: 8),
