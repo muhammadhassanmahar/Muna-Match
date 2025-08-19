@@ -114,7 +114,10 @@ class _HeightScreenState extends State<HeightScreen> {
                 ),
                 child: const Text(
                   "Continue",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white, // Changed text color to white
+                  ),
                 ),
               ),
             ),
