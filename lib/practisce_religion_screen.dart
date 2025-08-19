@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/halal_screen.dart';
 
 class PractiseReligionScreen extends StatefulWidget {
   const PractiseReligionScreen({super.key});
@@ -122,7 +123,16 @@ class _PractiseReligionScreenState extends State<PractiseReligionScreen> {
               ),
             ),
             ElevatedButton(
-              onPressed: selectedOption == null ? null : () {},
+              onPressed: selectedOption == null
+                  ? null
+                  : () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HalalScreen(),
+                        ),
+                      );
+                    },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 55),
                 backgroundColor: selectedOption == null
