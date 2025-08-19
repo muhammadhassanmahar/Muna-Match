@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/height_screen.dart';
 
 class NationalityScreen extends StatefulWidget {
   const NationalityScreen({super.key});
@@ -144,13 +145,9 @@ class _NationalityScreenState extends State<NationalityScreen> {
                   ),
                   onPressed: selectedCountries.isNotEmpty
                       ? () {
-                          // Next screen navigation
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Selected: ${selectedCountries.join(", ")}",
-                              ),
-                            ),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HeightScreen()),
                           );
                         }
                       : null,
