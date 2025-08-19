@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/smoke_screen.dart';
 
 class HalalScreen extends StatefulWidget {
   const HalalScreen({super.key});
@@ -116,7 +117,10 @@ class _HalalScreenState extends State<HalalScreen> {
                   ),
                 ),
                 onPressed: () {
-                  // Navigate to next screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SmokeScreen()),
+                  );
                 },
                 child: const Text(
                   "Continue",
