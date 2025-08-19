@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
-import 'personality_screen.dart';
+import 'bio_screen.dart';
 
-class InterestScreen extends StatefulWidget {
-  const InterestScreen({super.key});
+class PersonalityScreen extends StatefulWidget {
+  const PersonalityScreen({super.key});
 
   @override
-  InterestScreenState createState() => InterestScreenState();
+  PersonalityScreenState createState() => PersonalityScreenState();
 }
 
-class InterestScreenState extends State<InterestScreen> {
-  final List<String> interests = [
-    'American football','Archery','Badminton','Baseball','Boxing',
-    'Basketball','Calisthenics','Cricket','Cycling','Dancing',
-    'Fencing','Gym','Figure Skating','Golf',
+class PersonalityScreenState extends State<PersonalityScreen> {
+  final List<String> traits = [
+    'Active Listener','Adventurous','Affectionate','Ambitious',
+    'Animal Lover','Assertive','Bookworm','Brunch Lover',
+    'Carefree','Charismatic','Cheerful','Competitive',
+    'Confident','Conservative',
   ];
 
-  final List<String> selectedInterests = [];
+  final List<String> selectedTraits = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFFAF3EB),
       appBar: AppBar(
+        backgroundColor: const Color(0xFFFAF3EB),
         elevation: 0,
-        backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
         ),
         actions: const [
           Icon(Icons.help_outline, color: Colors.black),
@@ -40,48 +39,37 @@ class InterestScreenState extends State<InterestScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 10),
             const Text(
-              'What are your interests?',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+              'How would you describe your personality?',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 5),
             Text(
-              'Select upto 15 interests to make your profile stand out!',
+              'Select upto 5 traits to show off your personality!',
               style: TextStyle(color: Colors.grey.shade600),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Sport',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
             Expanded(
               child: SingleChildScrollView(
                 child: Wrap(
                   spacing: 8,
                   runSpacing: 8,
-                  children: interests.map((interest) {
-                    final bool isSelected = selectedInterests.contains(interest);
+                  children: traits.map((trait) {
+                    final bool isSelected = selectedTraits.contains(trait);
                     return ChoiceChip(
-                      label: Text(interest),
+                      label: Text(trait),
                       selectedColor: Colors.orange.shade200,
                       backgroundColor: Colors.grey.shade200,
                       selected: isSelected,
                       onSelected: (selected) {
                         setState(() {
                           if (selected) {
-                            if (selectedInterests.length < 15) {
-                              selectedInterests.add(interest);
+                            if (selectedTraits.length < 5) {
+                              selectedTraits.add(trait);
                             }
                           } else {
-                            selectedInterests.remove(interest);
+                            selectedTraits.remove(trait);
                           }
                         });
                       },
@@ -90,12 +78,11 @@ class InterestScreenState extends State<InterestScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: selectedInterests.isEmpty
+                  backgroundColor: selectedTraits.isEmpty
                       ? Colors.orange.shade100
                       : Colors.orangeAccent,
                   padding: const EdgeInsets.symmetric(vertical: 15),
@@ -104,25 +91,23 @@ class InterestScreenState extends State<InterestScreen> {
                   ),
                 ),
                 onPressed: () {
-                  if (selectedInterests.isEmpty) {
+                  if (selectedTraits.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("Please select at least one interest"),
+                        content: Text("Please select at least one trait"),
                       ),
                     );
                   } else {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PersonalityScreen(),
+                        builder: (context) => const BioScreen(),
                       ),
                     );
                   }
                 },
-                child: const Text(
-                  "Select",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
+                child: const Text("Select",
+                    style: TextStyle(color: Colors.white, fontSize: 16)),
               ),
             ),
             const SizedBox(height: 10),
@@ -131,9 +116,7 @@ class InterestScreenState extends State<InterestScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const PersonalityScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => const BioScreen()),
                   );
                 },
                 child: const Text("Skip", style: TextStyle(color: Colors.black)),
