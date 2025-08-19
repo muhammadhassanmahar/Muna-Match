@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/alcohol_screen.dart';
 
 class SmokeScreen extends StatefulWidget {
   const SmokeScreen({super.key});
@@ -124,7 +125,10 @@ class _SmokeScreenState extends State<SmokeScreen> {
                   ),
                 ),
                 onPressed: () {
-                  // Navigate to next screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AlcoholScreen()),
+                  );
                 },
                 child: const Text(
                   "Continue",
