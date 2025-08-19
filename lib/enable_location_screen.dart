@@ -64,7 +64,7 @@ class _EnableLocationScreenState extends State<EnableLocationScreen> {
             children: [
               const SizedBox(height: 40),
               Image.asset(
-                "assets/location_image.png", // आपकी asset image
+                "assets/images/locatin.png", // आपकी asset image
                 height: 180,
               ),
               const SizedBox(height: 30),
