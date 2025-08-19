@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'marriage_page_screen.dart';
 
-class EnableLocationScreen extends StatelessWidget {
+class EnableLocationScreen extends StatefulWidget {
   const EnableLocationScreen({super.key});
 
-  Future<void> _enableLocation(BuildContext context) async {
+  @override
+  State<EnableLocationScreen> createState() => _EnableLocationScreenState();
+}
+
+class _EnableLocationScreenState extends State<EnableLocationScreen> {
+  Future<void> _enableLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
     // Check if location services are enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!mounted) return; // ✅ check after await
     if (!serviceEnabled) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Please enable location services")),
@@ -20,8 +26,10 @@ class EnableLocationScreen extends StatelessWidget {
 
     // Check permission
     permission = await Geolocator.checkPermission();
+    if (!mounted) return; // ✅ check after await
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
+      if (!mounted) return; // ✅ check after await
       if (permission == LocationPermission.denied) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Location permission denied")),
@@ -38,6 +46,7 @@ class EnableLocationScreen extends StatelessWidget {
     }
 
     // If granted, navigate
+    if (!mounted) return; // ✅ final check
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const MarriagePageScreen()),
@@ -85,7 +94,7 @@ class EnableLocationScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: () => _enableLocation(context),
+                  onPressed: _enableLocation,
                   child: const Text(
                     "Enable Location",
                     style: TextStyle(color: Colors.white, fontSize: 16),

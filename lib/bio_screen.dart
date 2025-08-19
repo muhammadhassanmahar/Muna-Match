@@ -98,7 +98,7 @@ class _BioScreenState extends State<BioScreen> {
                 decoration: BoxDecoration(
                   color: isButtonActive
                       ? Colors.orange
-                      : Colors.orange.withOpacity(0.4),
+                      : Colors.orange.withAlpha(102), // Replaced withOpacity(0.4) with withAlpha(102)
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: const Text(
