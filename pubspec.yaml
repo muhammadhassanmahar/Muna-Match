@@ -14,7 +14,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  image_picker: ^1.1.2   # ✅ yahan hona chahiye
+  image_picker: ^1.1.2   # ✅ already added
+  geolocator: ^9.0.2     # ✅ added for location permissions
 
 dev_dependencies:
   flutter_test:
