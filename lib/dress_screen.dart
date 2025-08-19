@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muna_match/practisce_religion_screen.dart';
 
 class DressScreen extends StatefulWidget {
   const DressScreen({super.key});
@@ -98,7 +99,12 @@ class _DressScreenState extends State<DressScreen> {
               child: ElevatedButton(
                 onPressed: selectedIndex != null
                     ? () {
-                        // Navigate to next screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PractiseReligionScreen(),
+                          ),
+                        );
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
