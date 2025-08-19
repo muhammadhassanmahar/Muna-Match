@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'marital_status_screen.dart'; // Import the Marital Status screen
 
 class HeightScreen extends StatefulWidget {
   const HeightScreen({super.key});
@@ -103,7 +104,16 @@ class _HeightScreenState extends State<HeightScreen> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: selectedHeight != null ? () {} : null,
+                onPressed: selectedHeight != null
+                    ? () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MaritalStatusScreen(),
+                          ),
+                        );
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedHeight != null
                       ? Colors.redAccent
