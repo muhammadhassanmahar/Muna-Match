@@ -130,7 +130,8 @@ class _ExploreScreenState extends State<ExploreScreen>
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
               ),
               onPressed: () {},
               child: const Text(
@@ -146,14 +147,108 @@ class _ExploreScreenState extends State<ExploreScreen>
   }
 
   Widget visitedYouTab() {
-    return const Center(
-      child: Text("Visited you screen", style: TextStyle(fontSize: 16)),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          "Visited you",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          "These people have viewed your profile recently.",
+          style: TextStyle(color: Colors.grey),
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.amber.shade100,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Expanded(
+                child: Text(
+                  "Gold members get double\nthe daily profile visits",
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  side: const BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                onPressed: () {},
+                child: const Text("Get more visits"),
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 
   Widget favouritedTab() {
-    return const Center(
-      child: Text("Favourited screen", style: TextStyle(fontSize: 16)),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          "Favourited",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          "The profiles that you favourite will show up here.",
+          style: TextStyle(color: Colors.grey),
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.amber.shade100,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Expanded(
+                child: Text(
+                  "Gold members can see\nwho has favourited them",
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  side: const BorderSide(color: Colors.grey),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                onPressed: () {},
+                child: const Text("Unlock now"),
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 
