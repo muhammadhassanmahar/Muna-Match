@@ -3,6 +3,7 @@ import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
 import 'package:muna_match/confirm_screen.dart';
+import 'package:muna_match/explore_screen.dart';
 import 'package:muna_match/profession_screen.dart';
 import 'splash_screen.dart';
 import 'sign_up_screen.dart';
@@ -58,7 +59,9 @@ class MunaMatchApp extends StatelessWidget {
                     '/block_contacts_screen': (context) => const BlockContactsScreen(),
                     '/enable_notifications_screen': (context) => const EnableNotificationsScreen(), 
                       '/confirm_screen': (context) => const ConfirmScreen(), 
-                      '/add_photo_screen': (context) => const AddPhotoScreen(), 
+                      '/add_photo_screen': (context) => const AddPhotoScreen(),
+                      '/explore_screen': (context) => const ExploreScreen(),
+ 
                                       
       },
     );
