@@ -46,14 +46,14 @@ flutter:
     - assets/images/bismillah.png
     - assets/images/location.png
     - assets/images/profile_image.png
-    - assets/not_boosted_badge.png
-    - assets/eye_icon.png
-    - assets/like.png
-    - assets/dislike.png
-    - assets/boost.png
-    - assets/marriage_icon.png
-    - assets/explore_icon.png
-    - assets/social_icon.png
-    - assets/chat_icon.png
-    - assets/menu_icon.png
+    - assets/imagesnot_boosted_badge.png
+    - assets/images/eye_icon.png
+    - assets/images/like.png
+    - assets/images/dislike.png
+    - assets/images/boost.png
+    - assets/images/marriage_icon.png
+    - assets/images/explore_icon.png
+    - assets/images/social_icon.png
+    - assets/images/chat_icon.png
+    - assets/images/menu_icon.png
 
