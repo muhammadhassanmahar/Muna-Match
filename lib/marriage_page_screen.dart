@@ -44,12 +44,12 @@ class MarriagePageScreen extends StatelessWidget {
                   Positioned(
                     top: 16,
                     left: 16,
-                    child: Image.asset('assets/not_boosted_badge.png', height: 30),
+                    child: Image.asset('assets/images/not_boosted_badge.png', height: 30),
                   ),
                   Positioned(
                     top: 16,
                     right: 16,
-                    child: Image.asset('assets/eye_icon.png', height: 30),
+                    child: Image.asset('assets//images/eye_icon.png', height: 30),
                   ),
                   // User Info
                   Positioned(
