@@ -190,7 +190,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/userprofile_menu');
+                  Navigator.pushNamed(context, '/user_profile_menu');
                 },
                 child: const Text("Get more visits"),
               )
