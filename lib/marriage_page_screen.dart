@@ -102,9 +102,9 @@ class MarriagePageScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset('assets/dislike.png', height: 50), // Cross icon
-                        Image.asset('assets/boost.png', height: 50),   // Boost icon
-                        Image.asset('assets/like.png', height: 50),    // Tick icon
+                        Image.asset('assets/images/dislike.png', height: 50), // Cross icon
+                        Image.asset('assets/images/boost.png', height: 50),   // Boost icon
+                        Image.asset('assets/images/like.png', height: 50),    // Tick icon
                       ],
                     ),
                   ),
