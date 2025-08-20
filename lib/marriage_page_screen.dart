@@ -119,13 +119,13 @@ class MarriagePageScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  navbarIcon('assets/marriage_icon.png', isActive: true),
-                  navbarIcon('assets/explore_icon.png', onTap: () {
+                  navbarIcon('assets/images/marriage_icon.png', isActive: true),
+                  navbarIcon('assets/images/explore_icon.png', onTap: () {
                     Navigator.pushNamed(context, '/explore_like_screen');
                   }),
-                  navbarIcon('assets/social_icon.png'),
-                  navbarIcon('assets/chat_icon.png'),
-                  navbarIcon('assets/menu_icon.png'),
+                  navbarIcon('assets/images/social_icon.png'),
+                  navbarIcon('assets/images/chat_icon.png'),
+                  navbarIcon('assets/images/menu_icon.png'),
                 ],
               ),
             )
