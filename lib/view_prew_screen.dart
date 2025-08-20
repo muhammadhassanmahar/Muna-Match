@@ -95,7 +95,7 @@ class ViewPrewScreen extends StatelessWidget {
             /// ----- Profile Image -----
             Expanded(
               child: Image.asset(
-                "assets/images/profile.png",
+                "assets/images/sample_user.png",
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),
