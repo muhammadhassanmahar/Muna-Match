@@ -189,7 +189,9 @@ class _ExploreScreenState extends State<ExploreScreen>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/userprofile_menu');
+                },
                 child: const Text("Get more visits"),
               )
             ],
