@@ -199,7 +199,7 @@ class UserProfileMenu extends StatelessWidget {
           Image.asset(
             assetPath,
             height: 24,
-            color: isActive ? Colors.orange : Colors.grey,
+            color: isActive ? Colors.deepOrange : Colors.grey,
           ),
           const SizedBox(height: 4),
           if (isActive)
