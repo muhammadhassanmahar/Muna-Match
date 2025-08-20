@@ -46,7 +46,7 @@ flutter:
     - assets/images/bismillah.png
     - assets/images/location.png
     - assets/images/profile_image.png
-    - assets/imagesnot_boosted_badge.png
+    - assets/images/not_boosted_badge.png
     - assets/images/eye_icon.png
     - assets/images/like.png
     - assets/images/dislike.png
