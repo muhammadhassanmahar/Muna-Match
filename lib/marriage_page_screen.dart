@@ -121,7 +121,7 @@ class MarriagePageScreen extends StatelessWidget {
                 children: [
                   navbarIcon('assets/images/marriage_icon.png', isActive: true),
                   navbarIcon('assets/images/explore_icon.png', onTap: () {
-                    Navigator.pushNamed(context, '/explore_like_screen');
+                    Navigator.pushNamed(context, '/explore_screen');
                   }),
                   navbarIcon('assets/images/social_icon.png'),
                   navbarIcon('assets/images/chat_icon.png'),
