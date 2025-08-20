@@ -122,18 +122,21 @@ class _ExploreScreenState extends State<ExploreScreen>
         ),
         const Spacer(),
         Center(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.amber.shade600,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber.shade600,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-            ),
-            onPressed: () {},
-            child: const Text(
-              "See who likes you 👑",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              onPressed: () {},
+              child: const Text(
+                "See who likes you 👑",
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             ),
           ),
         ),
