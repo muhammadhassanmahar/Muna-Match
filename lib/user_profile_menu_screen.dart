@@ -15,7 +15,7 @@ class UserProfileMenu extends StatelessWidget {
             const SizedBox(height: 20),
             CircleAvatar(
               radius: 40,
-              backgroundImage: AssetImage("assets/images/profile.png"),
+              backgroundImage: AssetImage("assets/images/sample_user.png"),
             ),
             const SizedBox(height: 10),
             Row(
