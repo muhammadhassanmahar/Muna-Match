@@ -19,7 +19,7 @@ class MarriagePageScreen extends StatelessWidget {
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/profile_image.png'), // <-- your image
+                        image: AssetImage('assets/images/profile_image.png'), // <-- your image
                         fit: BoxFit.cover,
                       ),
                     ),
