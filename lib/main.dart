@@ -18,6 +18,9 @@ import 'block_contacts_screen.dart';
 import 'enable_notifications_screen.dart';
 import 'visited_you_screen.dart';
 import 'favourited_screen.dart';
+import 'user_profile_menu_screen.dart';
+import 'view_prew_screen.dart';
+import 'profile_edit_screen.dart';
 
 void main() {
   runApp(const MunaMatchApp());
@@ -64,7 +67,11 @@ class MunaMatchApp extends StatelessWidget {
                       '/add_photo_screen': (context) => const AddPhotoScreen(),
                       '/explore_screen': (context) => const ExploreScreen(),
                       '/visited_you_screen': (context) => const VisitedYouScreen(),
-                      '/favorited_screen': (context) => const FavouritedScreen(),
+                      '/favourited_screen': (context) => const FavouritedScreen(),
+                      '/user_profile_menu_screen': (context) => const UserProfileMenu(),
+                      '/view_prew_screen': (context) => const ViewPrewScreen(),
+                      '/profile_edit_screen': (context) => const ProfileEditScreen(),
+                    
  
                                       
       },
