@@ -68,7 +68,7 @@ class MunaMatchApp extends StatelessWidget {
                       '/explore_screen': (context) => const ExploreScreen(),
                       '/visited_you_screen': (context) => const VisitedYouScreen(),
                       '/favourited_screen': (context) => const FavouritedScreen(),
-                      '/user_profile_menu_screen': (context) => const UserProfileMenu(),
+                      '/user_profile_menu': (context) => const UserProfileMenu(),
                       '/view_prew_screen': (context) => const ViewPrewScreen(),
                       '/profile_edit_screen': (context) => const ProfileEditScreen(),
                     
