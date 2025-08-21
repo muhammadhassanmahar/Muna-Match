@@ -1,107 +1,74 @@
 import 'package:flutter/material.dart';
 
-class CompleteProfileTaglineScreen extends StatefulWidget {
-  const CompleteProfileTaglineScreen({super.key});
+class CompleteProfileTagline extends StatefulWidget {
+  const CompleteProfileTagline({super.key});
 
   @override
-  State<CompleteProfileTaglineScreen> createState() => _CompleteProfileTaglineScreenState();
+  State<CompleteProfileTagline> createState() => _CompleteProfileTaglineState();
 }
 
-class _CompleteProfileTaglineScreenState extends State<CompleteProfileTaglineScreen> {
+class _CompleteProfileTaglineState extends State<CompleteProfileTagline> {
   final TextEditingController _taglineController = TextEditingController();
-  bool _isButtonActive = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _taglineController.addListener(() {
-      setState(() {
-        _isButtonActive = _taglineController.text.trim().isNotEmpty;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _taglineController.dispose();
-    super.dispose();
-  }
-
-  void _onContinue() {
-    // 👇 Replace with your next screen route
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const NextScreenPlaceholder()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFFDF7F2), // same background
       appBar: AppBar(
+        backgroundColor: const Color(0xFFFDF7F2),
         elevation: 0,
-        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black87, size: 20),
+          onPressed: () => Navigator.pop(context),
+        ),
         centerTitle: true,
         title: const Text(
-          "Complete Profile",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          "Tagline",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Write a tagline about yourself",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 10),
             TextField(
               controller: _taglineController,
-              maxLength: 50,
-              decoration: InputDecoration(
-                hintText: "e.g. Dreamer | Traveller | Foodie",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Colors.orange),
-                ),
+              maxLines: 6,
+              style: const TextStyle(color: Colors.black87, fontSize: 15),
+              decoration: const InputDecoration(
+                hintText: "Describe yourself in a few sentences",
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                border: InputBorder.none,
               ),
             ),
             const Spacer(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _isButtonActive ? _onContinue : null,
+                onPressed: () {
+                  Navigator.pushNamed(context, "/complete_profile_language");
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFFFF6F61), // orange button
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
-                child: const Text("Continue", style: TextStyle(fontSize: 16)),
+                child: const Text(
+                  "Update",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
-    );
-  }
-}
-
-class NextScreenPlaceholder extends StatelessWidget {
-  const NextScreenPlaceholder({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Next Screen Here")),
     );
   }
 }

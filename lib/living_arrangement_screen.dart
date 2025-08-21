@@ -107,7 +107,7 @@ class _LivingArrangementScreenState extends State<LivingArrangementScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const CompleteProfileTaglineScreen(),
+                          builder: (_) => const CompleteProfileTagline(),
                         ),
                       );
                     }
