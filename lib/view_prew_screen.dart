@@ -61,7 +61,8 @@ class ViewPrewScreen extends StatelessWidget {
 
                 /// ----- Tabs (Preview / Edit) -----
                 Container(
-                  color: Colors.grey.shade200.withOpacity(0.8),
+                  color: Colors.black.withValues(alpha: 0.5),
+ 
                   child: Row(
                     children: [
                       Expanded(
