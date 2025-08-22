@@ -102,34 +102,22 @@ class InboxScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: const Color(0xFFFF5E4D),
-          unselectedItemColor: Colors.grey,
-          currentIndex: 3, // Chat tab active
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: "Marriage",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: "Explore",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.public),
-              label: "Muna Social",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              label: "Chat",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: "Menu",
-            ),
+            // Custom Bottom Navbar
+            Container(
+              height: 70,
+              color: Colors.grey.shade200, // grey background
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  navbarIcon('assets/images/marriage_icon.png'),
+                  navbarIcon('assets/images/explore_icon.png'),
+                  navbarIcon('assets/images/social_icon.png'),
+                  navbarIcon('assets/images/chat_icon.png',
+                      isActive: true), // chat active
+                  navbarIcon('assets/images/menu_icon.png'),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -159,6 +147,34 @@ class InboxScreen extends StatelessWidget {
         ),
       ),
       onTap: onTap,
+    );
+  }
+
+  /// ---- Custom Navbar Icon ----
+  Widget navbarIcon(String assetPath,
+      {bool isActive = false, VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            assetPath,
+            height: 24,
+            color: isActive ? Colors.orange : Colors.grey,
+          ),
+          const SizedBox(height: 4),
+          if (isActive)
+            Container(
+              height: 4,
+              width: 4,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.deepOrangeAccent,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
