@@ -11,13 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   image_picker: ^1.1.2     # ✅ for camera & gallery
   geolocator: ^9.0.2       # ✅ for location permissions
   record: ^5.0.0           # ✅ for voice recording
   audioplayers: ^6.1.0     # ✅ for playing voice notes
+  path_provider: ^2.1.3    # ✅ for saving recorded files
 
 dev_dependencies:
   flutter_test:

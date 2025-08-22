@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:record/record.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -13,184 +13,174 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  final List<Map<String, dynamic>> _messages = [];
+  final List<Map<String, dynamic>> _messages = []; // type + content
+
   final ImagePicker _picker = ImagePicker();
-  final Record _audioRecorder = Record();
+  final AudioRecorder _recorder = AudioRecorder();
+  final AudioPlayer _player = AudioPlayer();
 
   bool _isRecording = false;
 
-  void _sendMessage(String text) {
-    if (text.isNotEmpty) {
+  // send text
+  void _sendMessage() {
+    if (_controller.text.trim().isNotEmpty) {
       setState(() {
-        _messages.add({"type": "text", "data": text, "sender": "me"});
+        _messages.add({"type": "text", "data": _controller.text.trim()});
       });
       _controller.clear();
     }
   }
 
-  Future<void> _pickImage() async {
-    final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-    if (photo != null) {
+  // pick image
+  Future<void> _pickImage(ImageSource source) async {
+    final picked = await _picker.pickImage(source: source);
+    if (picked != null) {
       setState(() {
-        _messages.add({"type": "image", "data": File(photo.path), "sender": "me"});
+        _messages.add({"type": "image", "data": picked.path});
       });
     }
   }
 
+  // start recording
   Future<void> _startRecording() async {
-    if (await _audioRecorder.hasPermission()) {
-      Directory tempDir = await getTemporaryDirectory();
-      String path = '${tempDir.path}/${DateTime.now().millisecondsSinceEpoch}.m4a';
-
-      await _audioRecorder.start(path: path);
+    if (await _recorder.hasPermission()) {
+      final path = "${Directory.systemTemp.path}/rec_${DateTime.now().millisecondsSinceEpoch}.m4a";
+      await _recorder.start(const RecordConfig(), path: path);
       setState(() {
         _isRecording = true;
       });
     }
   }
 
+  // stop recording
   Future<void> _stopRecording() async {
-    final path = await _audioRecorder.stop();
-    setState(() {
-      _isRecording = false;
-      if (path != null) {
-        _messages.add({"type": "audio", "data": File(path), "sender": "me"});
-      }
-    });
+    final path = await _recorder.stop();
+    if (path != null) {
+      setState(() {
+        _messages.add({"type": "audio", "data": path});
+        _isRecording = false;
+      });
+    }
   }
 
-  Widget _buildMessage(Map<String, dynamic> message) {
-    bool isMe = message['sender'] == "me";
-
-    Widget content;
-    if (message['type'] == "text") {
-      content = Text(message['data']);
-    } else if (message['type'] == "image") {
-      content = Image.file(message['data'], width: 150, height: 150, fit: BoxFit.cover);
-    } else if (message['type'] == "audio") {
-      content = Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.play_arrow, color: Colors.white),
-          const SizedBox(width: 5),
-          const Text("Voice Note", style: TextStyle(color: Colors.white)),
-        ],
-      );
-    } else {
-      content = const SizedBox.shrink();
-    }
-
-    return Align(
-      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: isMe ? Colors.red[300] : Colors.blue[100],
-          borderRadius: BorderRadius.circular(12),
+  Widget _buildMessage(Map<String, dynamic> msg) {
+    if (msg["type"] == "text") {
+      return Align(
+        alignment: Alignment.centerRight,
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.orange,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            msg["data"],
+            style: const TextStyle(color: Colors.white),
+          ),
         ),
-        child: content,
-      ),
-    );
+      );
+    } else if (msg["type"] == "image") {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          child: Image.file(
+            File(msg["data"]),
+            width: 200,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
+    } else if (msg["type"] == "audio") {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.mic, color: Colors.black54),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: const Icon(Icons.play_arrow),
+                onPressed: () async {
+                  await _player.play(DeviceFileSource(msg["data"]));
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    return const SizedBox();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragEnd: (details) {
-        if (details.primaryVelocity! > 0) {
-          Navigator.pushReplacementNamed(context, '/inbox_screen');
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Row(
-            children: [
-              const CircleAvatar(
-                radius: 18,
-                backgroundImage: AssetImage("assets/images/profile_image.png"),
-              ),
-              const SizedBox(width: 8),
-              const Text(
-                "Azaan",
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(width: 4),
-              const Icon(Icons.verified, color: Colors.blue, size: 18),
-            ],
-          ),
-          actions: [
-            IconButton(icon: const Icon(Icons.call, color: Colors.black), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.videocam, color: Colors.black), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.more_vert, color: Colors.black), onPressed: () {}),
-          ],
-        ),
-        body: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              child: const Column(
-                children: [
-                  Text("Keep it Halal!", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 4),
-                  Text("Report any chats that cross the line", style: TextStyle(color: Colors.grey)),
-                  SizedBox(height: 4),
-                  Text("You matched ❤️", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _messages.length,
-                itemBuilder: (context, index) {
-                  return _buildMessage(_messages[index]);
-                },
-              ),
-            ),
-            Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Chat"),
+        backgroundColor: Colors.orange,
+      ),
+      body: Column(
+        children: [
+          // chat messages
+          Expanded(
+            child: ListView.builder(
               padding: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onLongPress: _startRecording,
-                    onLongPressUp: _stopRecording,
-                    child: Icon(
-                      _isRecording ? Icons.mic_off : Icons.mic,
-                      color: _isRecording ? Colors.red : Colors.black54,
-                      size: 28,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        hintText: "Type a message",
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.camera_alt, color: Colors.black54),
-                    onPressed: _pickImage,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.send, color: Colors.red),
-                    onPressed: () => _sendMessage(_controller.text),
-                  ),
-                ],
-              ),
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                return _buildMessage(_messages[index]);
+              },
             ),
-          ],
-        ),
+          ),
+          // input area
+          SafeArea(
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.camera_alt, color: Colors.orange),
+                  onPressed: () => _pickImage(ImageSource.camera),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.image, color: Colors.orange),
+                  onPressed: () => _pickImage(ImageSource.gallery),
+                ),
+                IconButton(
+                  icon: Icon(_isRecording ? Icons.stop : Icons.mic,
+                      color: Colors.red),
+                  onPressed: () {
+                    if (_isRecording) {
+                      _stopRecording();
+                    } else {
+                      _startRecording();
+                    }
+                  },
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      hintText: "Type a message",
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.send, color: Colors.orange),
+                  onPressed: _sendMessage,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
