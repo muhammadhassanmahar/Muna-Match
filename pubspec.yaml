@@ -14,8 +14,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  image_picker: ^1.1.2   # ✅ already added
-  geolocator: ^9.0.2     # ✅ added for location permissions
+  image_picker: ^1.1.2     # ✅ for camera & gallery
+  geolocator: ^9.0.2       # ✅ for location permissions
+  record: ^5.0.0           # ✅ for voice recording
+  audioplayers: ^6.1.0     # ✅ for playing voice notes
 
 dev_dependencies:
   flutter_test:
@@ -57,4 +59,3 @@ flutter:
     - assets/images/chat_icon.png
     - assets/images/menu_icon.png
     - assets/images/profile.png
-
