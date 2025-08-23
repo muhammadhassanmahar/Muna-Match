@@ -38,7 +38,7 @@ class NoMoreBrowsingScreen extends StatelessWidget {
             // Profile Image
             CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage("assets/images/profile.png"), 
+              backgroundImage: AssetImage("assets/images/profile_image.png"), 
               // aap apni image ka asset name dal dena
             ),
             const SizedBox(height: 12),
