@@ -3,6 +3,7 @@ import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
 import 'package:muna_match/complete_profile_language.dart';
+import 'package:muna_match/complete_profile_location.dart';
 import 'package:muna_match/complete_profile_sect.dart';
 import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
@@ -75,6 +76,7 @@ class MunaMatchApp extends StatelessWidget {
                       '/profile_edit_screen': (context) => const ProfileEditScreen(),
                       '/complete_profile_language': (context) => const CompleteProfileLanguage(),
                       '/complete_profile_sect': (context) => const CompleteProfileSect(),
+                      '/complete_profile_location': (context) => const CompleteProfileLocationScreen(),
                       
                     
  
