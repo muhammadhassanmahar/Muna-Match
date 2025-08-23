@@ -58,7 +58,7 @@ class YouMatchedScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
                       image: const DecorationImage(
-                        image: AssetImage("assets/images/profile2.png"),
+                        image: AssetImage("assets/images/profile_image.png"),
                         fit: BoxFit.cover,
                       ),
                       boxShadow: [
