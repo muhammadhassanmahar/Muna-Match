@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'my_event_screen.dart';
 
 class UpcomingEventScreen extends StatefulWidget {
-  const UpcomingEventScreen({Key? key}) : super(key: key);
+  const UpcomingEventScreen({super.key});
 
   @override
   State<UpcomingEventScreen> createState() => _UpcomingEventScreenState();
@@ -64,59 +63,92 @@ class _UpcomingEventScreenState extends State<UpcomingEventScreen>
                   Tab(text: "Upcoming"),
                   Tab(text: "My events"),
                 ],
-                onTap: (index) {
-                  if (index == 1) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyEventScreen()),
-                    );
-                  }
-                },
               ),
             ),
 
             const SizedBox(height: 10),
 
-            // Around the world text
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "Around the world",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            // Events List Scrollable
+            // Tab Views
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _eventCard(
-                      size,
-                      "London, GB",
-                      "Candle light Iftar gathering | Muna x NDP",
-                      "31/07/2025 7:00PM GMT +1",
-                      "NDP garden, 13 high hallburn, London",
-                      "assets/images/iftar_event.jpg",
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  /// --- Upcoming Events ---
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          "Around the world",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              _eventCard(
+                                size,
+                                "London, GB",
+                                "Candle light Iftar gathering | Muna x NDP",
+                                "31/07/2025 7:00PM GMT +1",
+                                "NDP garden, 13 high hallburn, London",
+                                "assets/images/iftar_event.jpg",
+                              ),
+                              const SizedBox(height: 16),
+                              _eventCard(
+                                size,
+                                "London, GB",
+                                "Community Meetup | London Techies",
+                                "05/08/2025 5:00PM GMT +1",
+                                "Tech Park, 45 Green Street, London",
+                                "assets/images/meetup_event.jpg",
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  /// --- My Events ---
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/no_event.png",
+                          height: 150,
+                        ),
+                        const SizedBox(height: 24),
+                        const Text(
+                          "You havent booked any\ntickets yet",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 32),
+                          child: Text(
+                            "Once you book an event, you will see your tickets here. "
+                            "You can also view the full guest list for events once they have ended.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 16),
-                    _eventCard(
-                      size,
-                      "London, GB",
-                      "Community Meetup | London Techies",
-                      "05/08/2025 5:00PM GMT +1",
-                      "Tech Park, 45 Green Street, London",
-                      "assets/images/meetup_event.jpg",
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -159,9 +191,9 @@ class _UpcomingEventScreenState extends State<UpcomingEventScreen>
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
             colors: [
-              Colors.black.withOpacity(0.6),
+              Colors.black.withValues(alpha: 0.6),
               Colors.transparent,
-              Colors.black.withOpacity(0.7),
+              Colors.black.withValues(alpha: 0.7),
             ],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
