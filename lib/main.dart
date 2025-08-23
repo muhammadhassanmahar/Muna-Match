@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
+import 'package:muna_match/chat_screen.dart';
 import 'package:muna_match/complete_profile_children.dart';
 import 'package:muna_match/complete_profile_grewup.dart';
 import 'package:muna_match/complete_profile_interest_screen.dart';
@@ -11,6 +12,7 @@ import 'package:muna_match/complete_profile_profession.dart';
 import 'package:muna_match/complete_profile_sect.dart';
 import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
+import 'package:muna_match/inbox_screen.dart';
 import 'package:muna_match/no_more_browsing.dart';
 import 'package:muna_match/profession_screen.dart';
 import 'package:muna_match/you_matched_screen.dart';
@@ -88,8 +90,9 @@ class MunaMatchApp extends StatelessWidget {
                        '/complete_profile_profession': (context) => const CompleteProfileProfessionScreen(),
                        '/complete_profile_interest': (context) => const CompleteProfileInterestScreen(),
                        '/no_more_browsing_screen': (context) => const NoMoreBrowsingScreen(),
-                        '/you_matched_screen': (context) => const YouMatchedScreen(),
-                      
+                       '/you_matched_screen': (context) => const YouMatchedScreen(),
+                       '/inbox_screen': (context) => const InboxScreen(),
+                           '/chat_screen': (context) => const ChatScreen(),
                     
  
                                       
