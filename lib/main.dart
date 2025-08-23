@@ -15,6 +15,7 @@ import 'package:muna_match/explore_screen.dart';
 import 'package:muna_match/inbox_screen.dart';
 import 'package:muna_match/no_more_browsing.dart';
 import 'package:muna_match/profession_screen.dart';
+import 'package:muna_match/upcoming_event_screen.dart';
 import 'package:muna_match/you_matched_screen.dart';
 import 'splash_screen.dart';
 import 'sign_up_screen.dart';
@@ -92,7 +93,11 @@ class MunaMatchApp extends StatelessWidget {
                        '/no_more_browsing_screen': (context) => const NoMoreBrowsingScreen(),
                        '/you_matched_screen': (context) => const YouMatchedScreen(),
                        '/inbox_screen': (context) => const InboxScreen(),
-                           '/chat_screen': (context) => const ChatScreen(),
+                       '/chat_screen': (context) => const ChatScreen(),
+                       '/upcoming_event_screen': (context) => const UpcomingEventScreen(),
+                        
+                        
+
                     
  
                                       
