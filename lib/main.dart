@@ -11,6 +11,7 @@ import 'package:muna_match/complete_profile_profession.dart';
 import 'package:muna_match/complete_profile_sect.dart';
 import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
+import 'package:muna_match/no_more_browsing.dart';
 import 'package:muna_match/profession_screen.dart';
 import 'splash_screen.dart';
 import 'sign_up_screen.dart';
@@ -85,6 +86,7 @@ class MunaMatchApp extends StatelessWidget {
                        '/complete_profile_children': (context) => const CompleteProfileChildrenScreen(),
                        '/complete_profile_profession': (context) => const CompleteProfileProfessionScreen(),
                        '/complete_profile_interest': (context) => const CompleteProfileInterestScreen(),
+                       '/no_more_browsing_screen': (context) => const NoMoreBrowsingScreen(),
                       
                     
  
