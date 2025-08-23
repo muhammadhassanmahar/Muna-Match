@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
+import 'package:muna_match/complete_profile_language.dart';
 import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
 import 'package:muna_match/profession_screen.dart';
@@ -71,6 +72,7 @@ class MunaMatchApp extends StatelessWidget {
                       '/user_profile_menu': (context) => const UserProfileMenu(),
                       '/view_prew_screen': (context) => const ViewPrewScreen(),
                       '/profile_edit_screen': (context) => const ProfileEditScreen(),
+                      '/complete_profile_language': (context) => const CompleteProfileLanguage(), 
                     
  
                                       

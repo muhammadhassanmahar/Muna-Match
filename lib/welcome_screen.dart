@@ -20,10 +20,13 @@ class WelcomeScreen extends StatelessWidget {
               height: 40,
             ),
 
-            // Illustration
-            Image.asset(
-              'assets/images/characters.png',
-              height: 200,
+            // Illustration (thoda upar shift)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Image.asset(
+                'assets/images/characters.png',
+                height: 180, // thoda chhota kiya taake upar lag sake
+              ),
             ),
 
             // Text content
@@ -34,25 +37,25 @@ class WelcomeScreen extends StatelessWidget {
                   Text(
                     "Salaam and welcome to Muna",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 24, // bara kiya
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 12),
                   Text(
                     "Looks like you’re new here, \nyouremail@gmail.com",
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 16, // bara kiya
+                      fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 12),
                   Text(
                     "Tell us about yourself and InshaAllah we will show you great Muslims nearby.",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16, // bara kiya
                       color: Colors.black54,
                     ),
                     textAlign: TextAlign.center,
@@ -66,7 +69,7 @@ class WelcomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 55, // thoda bada button
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -79,13 +82,13 @@ class WelcomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF6F61),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(28),
                     ),
                     elevation: 0,
                   ),
                   child: const Text(
                     "Get Started",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
               ),
