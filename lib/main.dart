@@ -13,6 +13,7 @@ import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
 import 'package:muna_match/no_more_browsing.dart';
 import 'package:muna_match/profession_screen.dart';
+import 'package:muna_match/you_matched_screen.dart';
 import 'splash_screen.dart';
 import 'sign_up_screen.dart';
 import 'email_screen.dart';  // Added for routing
@@ -87,6 +88,7 @@ class MunaMatchApp extends StatelessWidget {
                        '/complete_profile_profession': (context) => const CompleteProfileProfessionScreen(),
                        '/complete_profile_interest': (context) => const CompleteProfileInterestScreen(),
                        '/no_more_browsing_screen': (context) => const NoMoreBrowsingScreen(),
+                        '/you_matched_screen': (context) => const YouMatchedScreen(),
                       
                     
  
