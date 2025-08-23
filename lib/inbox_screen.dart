@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'chat_screen.dart';
+import 'upcoming_event_screen.dart'; // 👈 ye import zaroori hai
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
@@ -111,7 +112,16 @@ class InboxScreen extends StatelessWidget {
                 children: [
                   navbarIcon('assets/images/marriage_icon.png'),
                   navbarIcon('assets/images/explore_icon.png'),
-                  navbarIcon('assets/images/social_icon.png'),
+                  navbarIcon(
+                    'assets/images/social_icon.png',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UpcomingEventScreen()),
+                      );
+                    },
+                  ), // 👈 social_icon navigation added
                   navbarIcon('assets/images/chat_icon.png',
                       isActive: true), // chat active
                   navbarIcon('assets/images/menu_icon.png'),
