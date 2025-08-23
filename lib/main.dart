@@ -6,6 +6,7 @@ import 'package:muna_match/complete_profile_children.dart';
 import 'package:muna_match/complete_profile_grewup.dart';
 import 'package:muna_match/complete_profile_language.dart';
 import 'package:muna_match/complete_profile_location.dart';
+import 'package:muna_match/complete_profile_profession.dart';
 import 'package:muna_match/complete_profile_sect.dart';
 import 'package:muna_match/confirm_screen.dart';
 import 'package:muna_match/explore_screen.dart';
@@ -81,6 +82,7 @@ class MunaMatchApp extends StatelessWidget {
                       '/complete_profile_location': (context) => const CompleteProfileLocationScreen(),
                       '/complete_profile_grewup': (context) => const CompleteProfileGrewupScreen(),
                        '/complete_profile_children': (context) => const CompleteProfileChildrenScreen(),
+                       '/complete_profile_profession': (context) => const CompleteProfileProfessionScreen(),
                       
                     
  
