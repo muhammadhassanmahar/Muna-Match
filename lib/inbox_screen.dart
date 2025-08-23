@@ -64,7 +64,7 @@ class InboxScreen extends StatelessWidget {
                 children: [
                   _chatTile(
                     context,
-                    "assets/images/profile1.png",
+                    "assets/images/profile_image.png",
                     "Azaan",
                     "Hi Azaan, good to match with you!",
                     onTap: () {
