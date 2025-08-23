@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: const Padding(
           padding: EdgeInsets.only(left: 8.0),
           child: CircleAvatar(
-            backgroundImage: AssetImage("assets/images/user.png"), // apni image lagao
+            backgroundImage: AssetImage("assets/images/profile_image.png"), // apni image lagao
             radius: 18,
           ),
         ),
