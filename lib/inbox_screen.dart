@@ -77,7 +77,7 @@ class InboxScreen extends StatelessWidget {
                   ),
                   _chatTile(
                     context,
-                    "assets/images/profile2.png",
+                    "assets/images/Ali.png",
                     "Ali",
                     "Hi Ali, good to match with you!",
                   ),
