@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muna_match/add_photo_screen.dart';
 import 'package:muna_match/begin_journey_screen.dart';
 import 'package:muna_match/birthday_screen.dart';
+import 'package:muna_match/complete_profile_grewup.dart';
 import 'package:muna_match/complete_profile_language.dart';
 import 'package:muna_match/complete_profile_location.dart';
 import 'package:muna_match/complete_profile_sect.dart';
@@ -77,6 +78,7 @@ class MunaMatchApp extends StatelessWidget {
                       '/complete_profile_language': (context) => const CompleteProfileLanguage(),
                       '/complete_profile_sect': (context) => const CompleteProfileSect(),
                       '/complete_profile_location': (context) => const CompleteProfileLocationScreen(),
+                      '/complete_profile_grewup': (context) => const CompleteProfileGrewupScreen(),
                       
                     
  
