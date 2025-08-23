@@ -89,13 +89,13 @@ class InboxScreen extends StatelessWidget {
                   ),
                   _chatTile(
                     context,
-                    "assets/images/profile4.png",
+                    "assets/images/Ezdan.png",
                     "Ezdan",
                     "Hi ezdan, good to match with you!",
                   ),
                   _chatTile(
                     context,
-                    "assets/images/mehmet.png",
+                    "assets/images/Mehmet.png",
                     "Mehmet",
                     "Hi Mehmet, good to match with you!",
                   ),
