@@ -119,8 +119,8 @@ class _NameScreenState extends State<NameScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: isButtonEnabled
-                        ? Colors.deepOrange
-                        : Colors.deepOrange.withValues(alpha: 0.4),
+                        ? Colors.deepOrangeAccent
+                        : Colors.deepOrangeAccent.withValues(alpha: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
