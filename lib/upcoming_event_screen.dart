@@ -108,7 +108,7 @@ class _UpcomingEventScreenState extends State<UpcomingEventScreen>
                                 "Community Meetup | London Techies",
                                 "05/08/2025 5:00PM GMT +1",
                                 "Tech Park, 45 Green Street, London",
-                                "assets/images/meetup_event.jpg",
+                                "assets/images/meetup_event.png",
                               ),
                             ],
                           ),
